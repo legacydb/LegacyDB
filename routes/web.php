@@ -16,6 +16,13 @@ use Illuminate\Http\Request;
 
 Route::get('/', function () {
 	
+	return view('home');
+	
+});
+
+
+Route::get('/guides', function () {
+	
 	$guides = Guide::orderBy('created_at', 'asc')->get();
 	
     return view('guides', [
@@ -24,7 +31,13 @@ Route::get('/', function () {
 	
 });
 
-Route::post('/guide',function (Request $request) {
+Route::get('/guide/create', function () {
+	
+    return view('guide-create');
+	
+});
+
+Route::post('/guide/add',function (Request $request) {
 	
 	$validator = Validator::make($request->all(), [
 		'title' => 'required|max:255',
@@ -32,7 +45,7 @@ Route::post('/guide',function (Request $request) {
 	
 	if($validator->fails()){
 		
-		return redirect('/')
+		return redirect('/guide/create')
 			->withInput()
 			->withErrors($validator);
 			
@@ -42,7 +55,7 @@ Route::post('/guide',function (Request $request) {
 	$guide->title = $request->title;
 	$guide->save();
 	
-	return redirect('/');
+	return redirect('/guides');
 	
 });
 
@@ -50,6 +63,6 @@ Route::delete('/guide/{id}', function ($id) {
 	
 	Guide::findOrFail($id)->delete();
 	
-	return redirect('/');
+	return redirect('/guides');
 	
 });
