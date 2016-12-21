@@ -16,7 +16,7 @@
 					@foreach ($guides as $guide)
 						<tr>
 							<td>
-								<div>{{ $guide->title }}</div>
+								<div><a href="/guide/{{ $guide->slug }}">{{ $guide->title }}</a></div>
 							</td>
 						</tr>
 					@endforeach

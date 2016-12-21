@@ -16,6 +16,11 @@
 				<label>Title</label>
 				<input type="text" name="title" />
 			</div>
+			<div class="form-row">
+				<label>Content</label>
+				<br/>
+				<textarea name="content"></textarea>
+			</div>
 		</section>
 		<button class="button" type="submit">Save Guide</button>
 	</form>

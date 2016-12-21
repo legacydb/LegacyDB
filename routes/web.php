@@ -20,7 +20,6 @@ Route::get('/', function () {
 	
 });
 
-
 Route::get('/guides', function () {
 	
 	$guides = Guide::orderBy('created_at', 'asc')->get();
@@ -40,7 +39,8 @@ Route::get('/guide/create', function () {
 Route::post('/guide/add',function (Request $request) {
 	
 	$validator = Validator::make($request->all(), [
-		'title' => 'required|max:255',
+		'title' => 'required|max:255|unique:guides',
+		'content' => 'required',
 	]);
 	
 	if($validator->fails()){
@@ -53,9 +53,22 @@ Route::post('/guide/add',function (Request $request) {
 	
 	$guide = new Guide;
 	$guide->title = $request->title;
+	$guide->slug = str_slug($request->title,'-');
+	$guide->author = 'username';
+	$guide->content = $request->content;
 	$guide->save();
 	
 	return redirect('/guides');
+	
+});
+
+Route::get('/guide/{slug}', function ($slug) {
+	
+	$guide = Guide::where('slug',$slug)->first();
+	
+    return view('guide-view',[
+		'guide' => $guide
+	]);
 	
 });
 
