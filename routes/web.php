@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 
 Route::get('/', function () {
 	
-	return view('home');
+	return view('homepage');
 	
 });
 
@@ -79,3 +79,7 @@ Route::delete('/guide/{id}', function ($id) {
 	return redirect('/guides');
 	
 });
+
+Auth::routes();
+
+Route::get('/dashboard', 'HomeController@index');
