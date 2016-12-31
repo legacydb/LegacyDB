@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<h1>Homepage</h1>
-	<p>This will be the homepage</p>
+<h1>My Account</h1>
+<p>You are logged in!</p>
 
 @endsection

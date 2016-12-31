@@ -1,29 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
-	
-	
-	<div class="Errors">
-		 @include('common.errors')
-	</div>
-	
-	<h2>Guides</h2>
-	<br/>
+	<h1>Guides</h1>
 	<section>
-		<table>
+		<table class="full-width">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Rating</th>
+					<th>Comments</th>
+				</tr>
+			</thead>
 			<tbody>
 				@if (count($guides) > 0)
 					@foreach ($guides as $guide)
 						<tr>
 							<td>
-								<div><a href="/guide/{{ $guide->slug }}">{{ $guide->title }}</a></div>
+								<a href="/guide/{{ $guide->slug }}">{{ $guide->title }}</a>
 							</td>
+							<td>{{ $guide->author }}</td>
+							<td>4 Star</td>
+							<td>2 Comments</td>
 						</tr>
 					@endforeach
 				@endif
 			</tbody>
 		</table>
 	</section>
-	<a href="/guide/create" class="button">Create Guide</a>
+	@if (Auth::check())
+		<a href="/guide/create" class="button button-primary">Create Guide</a>
+	@endif
 	
 @endsection

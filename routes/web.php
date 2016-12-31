@@ -20,6 +20,7 @@ Route::get('/', function () {
 	
 });
 
+// Guides
 Route::get('/guides', function () {
 	
 	$guides = Guide::orderBy('created_at', 'asc')->get();
@@ -44,17 +45,17 @@ Route::post('/guide/add',function (Request $request) {
 	]);
 	
 	if($validator->fails()){
-		
 		return redirect('/guide/create')
 			->withInput()
 			->withErrors($validator);
-			
 	}
+	
+	$user = Auth::user();
 	
 	$guide = new Guide;
 	$guide->title = $request->title;
 	$guide->slug = str_slug($request->title,'-');
-	$guide->author = 'username';
+	$guide->author = $user->name;
 	$guide->content = $request->content;
 	$guide->save();
 	
@@ -62,17 +63,61 @@ Route::post('/guide/add',function (Request $request) {
 	
 });
 
-Route::get('/guide/{slug}', function ($slug) {
+Route::post('/guide/update',function (Request $request) {
+	
+	$validator = Validator::make($request->all(), [
+		'content' => 'required',
+	]);
+	
+	if($validator->fails()){
+		return back()
+			->withInput()
+			->withErrors($validator);
+	}
+	
+	$guide = Guide::findOrFail($request->id);
+	$guide->content = $request->content;
+	$guide->save();
+	
+	return redirect()->route('guide.view', ['slug' => $guide->slug]);
+	
+});
+
+Route::get('/guide/{slug}', ['as' => 'guide.view', function($slug){
 	
 	$guide = Guide::where('slug',$slug)->first();
 	
+	if(!$guide)
+		return redirect('/guides');
+	
+	$userIsAuthor = (Auth::check() && $guide->author == Auth::user()->name ? true : false);
+	
     return view('guide-view',[
-		'guide' => $guide
+		'guide' => $guide,
+		'userIsAuthor' =>  $userIsAuthor,
+	]);	
+	
+}]);
+
+Route::get('/guide/edit/{id}', function ($id) {
+	
+	$guide = Guide::where('id',$id)->first();
+	
+	if(!$guide)
+		return redirect('/guides');
+	
+	$userIsAuthor = (Auth::check() && $guide->author == Auth::user()->name ? true : false);
+	
+	if(!$userIsAuthor)
+		return redirect('/guides');
+	
+	return view('guide-edit',[
+		'guide' => $guide,
 	]);
 	
 });
 
-Route::delete('/guide/{id}', function ($id) {
+Route::delete('/guide/delete/{id}', function ($id) {
 	
 	Guide::findOrFail($id)->delete();
 	
@@ -82,4 +127,4 @@ Route::delete('/guide/{id}', function ($id) {
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index');
+Route::get('/my-account', 'HomeController@index');

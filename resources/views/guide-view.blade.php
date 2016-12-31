@@ -1,17 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+
+	<h1 class="post-title">{{ $guide->title }}</h1>
+	<p class="post-author">by {{ $guide->author }}</p>
+	@if($userIsAuthor)
+		<small>(<a href="/guide/edit/{{ $guide->id }}">edit</a>)</small>
+	@endif
 	
-	
-	<div class="Errors">
-		 @include('common.errors')
+	<hr/>
+	<div class="content">
+		@markdown($guide->content)
 	</div>
-	
-	<h2>{{ $guide->title }} </h2>
-	<br/>
-	<p>by {{ $guide->author }}</p>
-	<br/>
-	<p>{{ $guide->content }}</p>
-	
 	
 @endsection

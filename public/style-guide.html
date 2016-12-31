@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600" rel="stylesheet"> --> <!-- font-family: 'Titillium Web', sans-serif; -->
+	<link href="https://fonts.googleapis.com/css?family=Catamaran:400,600" rel="stylesheet">
+	<style>
+		*{ margin:0; padding:0; box-sizing:border-box; }
+		html{ margin:0; }
+		body{ font-family: 'Catamaran', sans-serif; background:#1c1d21; color:#eeeff7; font-size:15px; line-height:1.6; }
+		
+		h1,h2,h3,h4,h5,h6{ margin:0 0 10px; }
+		h1{ font-size:30px; }
+		h2{ font-size:26px; }
+		h3{ font-size:22px; }
+		h4{ font-size:20px; }
+		h5{ font-size:18px; }
+		h6{ font-size:16px; }
+		
+		p{ margin:0 0 10px; }
+		a{ color:#92cdcf; }
+		ul{ list-style-position:inside; }
+		ul ul, ul ol, ol ol, ol ul{ margin:0 0 0 20px; }
+		section{ padding:20px 0; }
+		
+		.container{ max-width:900px; margin:auto; }
+		
+		.button, button, input[type=submit], input[type=button]{ color: #eeeff7; text-decoration:none; background:#31353d; border:0; display:inline-block; font-size:12px; line-height:1.6; cursor:pointer; text-transform:uppercase; padding:10px 20px; font-family: 'Catamaran', sans-serif; letter-spacing:1px; outline:none; }
+		.button-primary, input[type=submit].button-primary, input[type=button].button-primary{ background:#445878; }
+		
+		input, textarea, select, fieldset{ margin:0 0 10px; }
+		label{ display:block; }
+		input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea, select { width:100%; border:0; font-family: 'Catamaran', sans-serif; padding:5px 6px; font-size:15px; }
+		
+		.right{ float:right; }
+		.left{ float:left; }
+		.clear{ clear:both; }
+		.full-width{ width:100%; }
+		
+		table{ border-collapse:collapse; }
+		th, td{ text-align:left; padding:6px 5px; border-bottom:1px solid #ccc; }
+		
+		.column, .columns { width:100%; float:left; }
+		
+		@media (min-width: 550px) {
+			.column,
+			.columns { margin-left: 4%; }
+			.column:first-child, .columns:first-child { margin-left: 0; }
+
+			.one.column, .one.columns { width: 4.66666666667%; }
+			.two.columns { width: 13.3333333333%; }
+			.three.columns { width: 22%; }
+			.four.columns { width: 30.6666666667%; }
+			.five.columns { width: 39.3333333333%; }
+			.six.columns { width: 48%; }
+			.seven.columns { width: 56.6666666667%; }
+			.eight.columns { width: 65.3333333333%; }
+			.nine.columns { width: 74.0%; }
+			.ten.columns { width: 82.6666666667%; }
+			.eleven.columns { width: 91.3333333333%; }
+			.twelve.columns { width: 100%; margin-left: 0; }
+			
+			.one-third.column { width: 30.6666666667%; }
+			.two-thirds.column { width: 65.3333333333%; }
+			.one-half.column { width: 48%; }
+			
+			.offset-by-one.column, .offset-by-one.columns { margin-left: 8.66666666667%; }
+			.offset-by-two.column, .offset-by-two.columns { margin-left: 17.3333333333%; }
+			.offset-by-three.column, .offset-by-three.columns { margin-left: 26%; }
+			.offset-by-four.column, .offset-by-four.columns { margin-left: 34.6666666667%; }
+			.offset-by-five.column, .offset-by-five.columns { margin-left: 43.3333333333%; }
+			.offset-by-six.column, .offset-by-six.columns { margin-left: 52%;}
+			.offset-by-seven.column, .offset-by-seven.columns { margin-left: 60.6666666667%; }
+			.offset-by-eight.column, .offset-by-eight.columns { margin-left: 69.3333333333%; }
+			.offset-by-nine.column, .offset-by-nine.columns { margin-left: 78.0%; }
+			.offset-by-ten.column, .offset-by-ten.columns { margin-left: 86.6666666667%; }
+			.offset-by-eleven.column, .offset-by-eleven.columns { margin-left: 95.3333333333%; }
+
+			.offset-by-one-third.column, .offset-by-one-third.columns { margin-left: 34.6666666667%; }
+			.offset-by-two-thirds.column, .offset-by-two-thirds.columns { margin-left: 69.3333333333%; }
+
+			.offset-by-one-half.column, .offset-by-one-half.columns { margin-left: 52%; }
+
+		}
+		
+		/* Larger than mobile */
+		@media (max-width: 400px) {}
+
+		/* Larger than phablet */
+		@media (max-width: 550px) {}
+
+		/* Larger than tablet */
+		@media (max-width: 750px) {}
+
+		/* Larger than desktop */
+		@media (max-width: 1000px) {}
+
+		/* Larger than Desktop HD */
+		@media (max-width: 1200px) {}
+		
+		
+	</style>
+</head>
+<body>
+	<div class="container">
+		<section>
+			<h1>Heading 1</h1>
+			<h2>Heading 2</h2>
+			<h3>Heading 3</h3>
+			<h4>Heading 4</h4>
+			<h5>Heading 5</h5>
+			<h6>Heading 6</h6>
+		</section>
+		<section>
+			<p>Mauris in libero ut erat rutrum porta a vel odio. <strong>Ut vel tincidunt elit</strong>. In eu sem a nisi tincidunt sagittis. Fusce convallis iaculis lectus, vel finibus mi mattis id. Integer luctus fermentum pretium. Quisque hendrerit nec eros sit amet luctus. Sed sollicitudin nisi mauris, sagittis porttitor mauris venenatis vel.</p>
+			<p>Etiam mattis molestie tortor, id interdum ante <em>cursus id</em>. Praesent vehicula facilisis libero, sed luctus risus finibus at. Aenean et nunc varius, vehicula erat id, bibendum ligula. Nam ut convallis turpis. <a href="#">Vestibulum suscipit volutpat odio</a>, sed euismod lorem tristique sed. Curabitur turpis ipsum, pellentesque non justo ac, venenatis pulvinar justo. Morbi non mollis dui. Nam sed finibus nulla. Quisque ac maximus quam, vitae rutrum ante. Proin quis cursus risus. Vestibulum rhoncus lobortis blandit. Vivamus egestas tempus lectus, sit amet aliquam ex fermentum cursus. Nullam volutpat semper lorem ut egestas. Curabitur ultricies venenatis ullamcorper. Aliquam urna nisi, fermentum a justo in, porttitor auctor nibh.</p>
+			<ul>
+				<li>List item 1</li>
+				<li>List item 2</li>
+				<li>
+					List item 3				
+					<ul>
+						<li>Sub Item 1</li>
+						<li>Sub Item 2</li>
+						<li>Sub Item 3</li>
+					</ul>
+				</li>
+
+				<li>List item 4</li>
+			</ul>
+		</section>
+		<section>
+			<a class="button" href="#">Anchor button</a>
+			<button>Button element</button>
+			<input type="submit" value="submit input">
+			<input type="button" value="button input">
+			<br/>
+			<br/>
+			<a class="button button-primary" href="#">Anchor button</a>
+			<button class="button-primary">Button element</button>
+			<input class="button-primary" type="submit" value="submit input">
+			<input class="button-primary" type="button" value="button input">		
+		</section>
+		<section>
+			<form>
+				<div class="row">
+					<div class="six columns">
+						<label for="exampleEmailInput">Your email</label>
+						<input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
+					</div>
+					<div class="six columns">
+						<label for="exampleRecipientInput">Reason for contacting</label>
+						<select class="u-full-width" id="exampleRecipientInput">
+							<option value="Option 1">Questions</option>
+							<option value="Option 2">Admiration</option>
+							<option value="Option 3">Can I get your number?</option>
+						</select>
+					</div>
+				</div>
+				<label for="exampleMessage">Message</label>
+				<textarea class="u-full-width" placeholder="Hi Dave ..." id="exampleMessage"></textarea>
+				<div class="right">
+					<input type="checkbox">
+					<span class="label-body">Send a copy to yourself</span>
+				</div>
+				<input class="button-primary" type="submit" value="Submit">
+			</form>
+		</section>
+		<section>
+		<table class="full-width">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Age</th>
+					<th>Sex</th>
+					<th>Location</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Dave Gamache</td>
+					<td>26</td>
+					<td>Male</td>
+					<td>San Francisco</td>
+				</tr>
+				<tr>
+					<td>Dwayne Johnson</td>
+					<td>42</td>
+					<td>Male</td>
+					<td>Hayward</td>
+				</tr>
+			</tbody>
+		</table>
+		</section>
+	</div>
+</body>
+</html>
