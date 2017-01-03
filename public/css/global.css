@@ -1,6 +1,6 @@
 *{ margin:0; padding:0; box-sizing:border-box; }
 html{ margin:0; }
-body{ font-family: 'Catamaran', sans-serif; background:url('/images/bg.jpg') no-repeat center center fixed; background-size:cover; color:#eeeff7; font-size:15px; line-height:1.6; }
+body{ font-family: 'Catamaran', sans-serif; background:url('/images/bg2.jpg') #1c1d21 no-repeat center center fixed; background-size:cover; color:#eeeff7; font-size:15px; line-height:1.6; }
 
 h1,h2,h3,h4,h5,h6{ margin:0 0 10px; }
 h1{ font-size:28px; }
@@ -33,9 +33,11 @@ hr{ border:0; height:0; border-bottom:1px solid #31353d; margin:0 0 10px; }
 .button:hover, button:hover, input[type=submit]:hover, input[type=button]:hover{ background:#373b44; color:inherit; }
 .button-primary:hover, input[type=submit].button-primary:hover, input[type=button].button-primary:hover{ background:#4d6386; color:inherit; }
 
+
 input, textarea, select, fieldset{ margin:0 0 10px; }
 label{ display:block; }
 input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea, select { width:100%; border:0; font-family: 'Catamaran', sans-serif; padding:5px 6px; font-size:15px; outline:none; }
+input:disabled, textarea:disabled, select:disabled{ background:#ccc; }
 
 .right{ float:right; }
 .left{ float:left; }
