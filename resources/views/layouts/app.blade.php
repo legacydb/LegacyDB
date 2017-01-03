@@ -17,7 +17,7 @@
 <body>
 	<div class="container">
 		<div class="header">
-			<h1>Legacy Warcraft</h1>
+			<h1>Legacy</h1>
 		</div>
 		<div class="main-content">
 			<div class="main-nav">

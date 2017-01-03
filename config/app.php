@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -180,6 +180,7 @@ return [
 		
 		//Markdown
 		Indal\Markdown\MarkdownServiceProvider::class,
+		App\Providers\MetaItemsServiceProvider::class,
     ],
 
     /*
