@@ -12,6 +12,7 @@
 */
 
 use App\Guide;
+use App\Item;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
@@ -122,6 +123,17 @@ Route::delete('/guide/delete/{id}', function ($id) {
 	Guide::findOrFail($id)->delete();
 	
 	return redirect('/guides');
+	
+});
+
+//Items
+Route::get('/items', function () {
+	
+	$items = Item::all();
+	
+    return view('items', [
+		'items' => $items
+	]);
 	
 });
 

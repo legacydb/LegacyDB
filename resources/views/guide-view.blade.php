@@ -11,6 +11,6 @@
 	@if($userIsAuthor)
 		<a href="/guide/edit/{{ $guide->id }}" class="button button-primary">Edit Guide</a>
 		<a href="/guide/delete/{{ $guide->id }}" class="button">Delete</a>
-	@endif	
+	@endif
 	
 @endsection
