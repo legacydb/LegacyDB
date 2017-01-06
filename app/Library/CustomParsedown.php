@@ -9,30 +9,57 @@ class CustomParsedown extends Parsedown
 
     function __construct()
     {
-        $this->InlineTypes['{'][]= 'ColoredText';
-
+        $this->InlineTypes['{'][]= 'MetaItem';
         $this->inlineMarkerList .= '{';
     }
-
-    protected function inlineColoredText($excerpt)
+	
+    protected function inlineMetaItem($Excerpt)
     {
-        if (preg_match('/^{c:([#\w]\w+)}(.*?){\/c}/', $excerpt['text'], $matches))
+		
+        if (!isset($Excerpt['text'][1]) or $Excerpt['text'][0] !== '{')
         {
-            return array(
-
-                // How many characters to advance the Parsedown's
-                // cursor after being done processing this tag.
-                'extent' => strlen($matches[0]), 
-                'element' => array(
-                    'name' => 'span',
-                    'text' => $matches[2],
-                    'attributes' => array(
-                        'style' => 'color: ' . $matches[1],
-                    ),
-                ),
-
-            );
-        }
+            return;
+        }		
+		
+		$extent = 0;
+		$remainder = $Excerpt['text'];
+		
+		if (preg_match('/\{((?:[^][]|(?R))*)\}/', $remainder, $matches)){
+			
+			$extent += strlen($matches[0]);
+			
+			$remainder = substr($remainder, $extent);
+			
+			if($matches[1] == 'ItemLink'){
+				
+				if (preg_match('/^[(]((?:[^()]|[(][^ )]+[)])+)(?:[ ]+("[^"]*"|\'[^\']*\'))?[)]/', $remainder, $matches)){
+					
+					$extent += strlen($matches[0]);
+					
+					$itemName = $matches[1];
+					
+					$Inline = array(
+						'extent' => $extent,
+						'element' => array(
+							'name' => 'a',
+							'text' => $itemName,
+							'attributes' => array(
+								'href' => '#',
+								'class' => 'item-link',
+							),
+						),
+					);
+					
+					return $Inline;
+					
+				}
+				
+			}
+			
+		}
+		
+		return;
+		
     }
 	
 }
