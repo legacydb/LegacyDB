@@ -28,6 +28,12 @@
 			</tbody>
 		</table>
 	</section>
+	
+	<div class="right">
+		{{ $guides->links() }}
+	</div>
+	<div class="clear"></div>
+	
 	@if (Auth::check())
 		<a href="/guide/create" class="button button-primary">Create Guide</a>
 	@endif

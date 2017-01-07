@@ -24,7 +24,7 @@ Route::get('/', function () {
 // Guides
 Route::get('/guides', function () {
 	
-	$guides = Guide::orderBy('created_at', 'asc')->get();
+	$guides = Guide::orderBy('created_at', 'asc')->paginate(10);
 	
     return view('guides', [
 		'guides' => $guides
