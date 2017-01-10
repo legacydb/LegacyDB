@@ -129,7 +129,7 @@ Route::delete('/guide/delete/{id}', function ($id) {
 //Items
 Route::get('/items', function () {
 	
-	$items = Item::all();
+	$items = Item::orderBy('created_at', 'asc')->paginate(100);
 	
     return view('items', [
 		'items' => $items
