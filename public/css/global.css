@@ -59,6 +59,16 @@ th, td{ text-align:left; padding:6px 5px; border-bottom:1px solid #31353d; }
 .post-title{ display:inline-block; margin:0; }
 .post-author{ display:inline-block; margin:0; }
 
+.item-poor, .item-poor:hover{ color:#9d9d9d; }
+.item-common, .item-common:hover{ color:#fff; }
+.item-uncommon, .item-uncommon:hover{ color:#1EFF00; }
+.item-rare, .item-rare:hover{ color:#0070dd; }
+.item-epic, .item-epic:hover{ color:#a335ee; }
+.item-legendary, .item-legendary:hover{ color:#ff8000; }
+.item-artifact, .item-artifact:hover{ color:#e5cc80; }
+.item-heirloom, .item-heirloom:hover{ color:#e5cc80; }
+
+
 @media (min-width: 550px) {
 	.column,
 	.columns { margin-left: 4%; }

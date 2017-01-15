@@ -88,15 +88,16 @@ Route::get('/guide/{slug}', ['as' => 'guide.view', function($slug){
 	
 	$guide = Guide::where('slug',$slug)->first();
 	
-	if(!$guide)
+	if(!$guide){
 		return redirect('/guides');
+	}
 	
 	$userIsAuthor = (Auth::check() && $guide->author == Auth::user()->name ? true : false);
 	
     return view('guide-view',[
 		'guide' => $guide,
 		'userIsAuthor' =>  $userIsAuthor,
-	]);	
+	]);
 	
 }]);
 
@@ -127,12 +128,47 @@ Route::delete('/guide/delete/{id}', function ($id) {
 });
 
 //Items
-Route::get('/items', function () {
+
+Route::get('/items/type/{type}', function ($type) {
 	
-	$items = Item::orderBy('created_at', 'asc')->paginate(100);
+	$items = Item::where('type',$type)->paginate(100);
 	
     return view('items', [
 		'items' => $items
+	]);
+	
+});
+
+Route::get('/items/quality/{quality}', function ($quality) {
+	
+	$items = Item::where('quality',$quality)->paginate(100);
+	
+    return view('items', [
+		'items' => $items
+	]);
+	
+});
+
+Route::get('/items', function () {
+	
+	$items = Item::orderBy('id', 'asc')->paginate(100);
+	
+    return view('items', [
+		'items' => $items
+	]);
+	
+});
+
+Route::get('/item/{slug}', function ($slug) {
+	
+	$item = Item::where('slug',$slug)->first();
+	
+	if(!$item){
+		return redirect('/items');
+	}
+	
+    return view('item-view',[
+		'item' => $item,
 	]);
 	
 });
