@@ -129,29 +129,13 @@ Route::delete('/guide/delete/{id}', function ($id) {
 
 //Items
 
-Route::get('/items/type/{type}', function ($type) {
-	
-	$items = Item::where('type',$type)->paginate(100);
-	
-    return view('items', [
-		'items' => $items
-	]);
-	
-});
-
-Route::get('/items/quality/{quality}', function ($quality) {
-	
-	$items = Item::where('quality',$quality)->paginate(100);
-	
-    return view('items', [
-		'items' => $items
-	]);
-	
-});
-
 Route::get('/items', function () {
 	
 	$items = Item::orderBy('id', 'asc')->paginate(100);
+	
+	//$quality = Request::get('quality');
+	// Create Controller - http://stackoverflow.com/questions/28573860/laravel-requestall-should-not-be-called-statically
+	//echo $quality;
 	
     return view('items', [
 		'items' => $items
