@@ -9,8 +9,12 @@
 	</div>
 	<hr/>
 	@if($userIsAuthor)
-		<a href="/guide/edit/{{ $guide->id }}" class="button button-primary">Edit Guide</a>
-		<a href="/guide/delete/{{ $guide->id }}" class="button">Delete</a>
+		<form action="/guide/{{$guide->id}}" method="post">
+			{{ csrf_field() }}
+			{{ method_field('DELETE') }}
+			<a href="/guide/{{ $guide->slug }}/edit" class="button button-primary">Edit Guide</a>
+			<input type="submit" class="button" value="Delete" />
+		</form>
 	@endif
 	
 @endsection

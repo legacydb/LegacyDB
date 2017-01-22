@@ -11,151 +11,20 @@
 |
 */
 
-use App\Guide;
-use App\Item;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
-	
 	return view('homepage');
-	
 });
 
 // Guides
-Route::get('/guides', function () {
-	
-	$guides = Guide::orderBy('created_at', 'asc')->paginate(10);
-	
-    return view('guides', [
-		'guides' => $guides
-	]);
-	
-});
-
-Route::get('/guide/create', function () {
-	
-    return view('guide-create');
-	
-});
-
-Route::post('/guide/add',function (Request $request) {
-	
-	$validator = Validator::make($request->all(), [
-		'title' => 'required|max:255|unique:guides',
-		'content' => 'required',
-	]);
-	
-	if($validator->fails()){
-		return redirect('/guide/create')
-			->withInput()
-			->withErrors($validator);
-	}
-	
-	$user = Auth::user();
-	
-	$guide = new Guide;
-	$guide->title = $request->title;
-	$guide->slug = str_slug($request->title,'-');
-	$guide->author = $user->name;
-	$guide->content = $request->content;
-	$guide->save();
-	
-	return redirect('/guides');
-	
-});
-
-Route::post('/guide/update',function (Request $request) {
-	
-	$validator = Validator::make($request->all(), [
-		'content' => 'required',
-	]);
-	
-	if($validator->fails()){
-		return back()
-			->withInput()
-			->withErrors($validator);
-	}
-	
-	$guide = Guide::findOrFail($request->id);
-	$guide->content = $request->content;
-	$guide->save();
-	
-	return redirect()->route('guide.view', ['slug' => $guide->slug]);
-	
-});
-
-Route::get('/guide/{slug}', ['as' => 'guide.view', function($slug){
-	
-	$guide = Guide::where('slug',$slug)->first();
-	
-	if(!$guide){
-		return redirect('/guides');
-	}
-	
-	$userIsAuthor = (Auth::check() && $guide->author == Auth::user()->name ? true : false);
-	
-    return view('guide-view',[
-		'guide' => $guide,
-		'userIsAuthor' =>  $userIsAuthor,
-	]);
-	
-}]);
-
-Route::get('/guide/edit/{id}', function ($id) {
-	
-	$guide = Guide::where('id',$id)->first();
-	
-	if(!$guide)
-		return redirect('/guides');
-	
-	$userIsAuthor = (Auth::check() && $guide->author == Auth::user()->name ? true : false);
-	
-	if(!$userIsAuthor)
-		return redirect('/guides');
-	
-	return view('guide-edit',[
-		'guide' => $guide,
-	]);
-	
-});
-
-Route::delete('/guide/delete/{id}', function ($id) {
-	
-	Guide::findOrFail($id)->delete();
-	
-	return redirect('/guides');
-	
-});
+Route::get('guides', 'GuideController@index');
+Route::get('guide', function () { return redirect('guides'); });
+Route::resource('guide', 'GuideController', ['except' => ['index']]);
 
 //Items
-
-Route::get('/items', function () {
-	
-	$items = Item::orderBy('id', 'asc')->paginate(100);
-	
-	//$quality = Request::get('quality');
-	// Create Controller - http://stackoverflow.com/questions/28573860/laravel-requestall-should-not-be-called-statically
-	//echo $quality;
-	
-    return view('items', [
-		'items' => $items
-	]);
-	
-});
-
-Route::get('/item/{slug}', function ($slug) {
-	
-	$item = Item::where('slug',$slug)->first();
-	
-	if(!$item){
-		return redirect('/items');
-	}
-	
-    return view('item-view',[
-		'item' => $item,
-	]);
-	
-});
+Route::get('/items', 'ItemController@items');
+Route::get('/item/{slug}', 'ItemController@item');
 
 Auth::routes();
 

@@ -4,7 +4,7 @@
 	
 	<h1>Create Guide</h1>
 	@include('common.errors')
-	<form action="/guide/add" method="post">
+	<form action="/guide" method="post">
 		{{ csrf_field() }}
 		<div class="row">
 			<div class="five columns">

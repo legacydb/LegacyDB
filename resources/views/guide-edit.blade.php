@@ -4,8 +4,9 @@
 	
 	<h1>Edit Guide</h1>
 	@include('common.errors')
-	<form action="/guide/update" method="post">
+	<form action="/guide/{{$guide->id}}" method="post">
 		{{ csrf_field() }}
+		{{ method_field('PATCH') }}
 		<div class="row">
 			<div class="five columns">
 				<label>Title</label>
@@ -18,7 +19,6 @@
 			<textarea name="content" rows="10">{{$guide->content}}</textarea>
 			<small class="right"><a href="#">Formatting help</a></small>
 		</div>
-		<input type="hidden" name="id" value="{{$guide->id}}" />
 		<button class="button-primary" type="submit">Save Guide</button>
 	</form>
 	
