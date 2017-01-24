@@ -10,12 +10,6 @@ use Illuminate\Http\Request;
 class GuideController extends Controller
 {
 	
-	
-	public function __construct()
-    {
-		$this->middleware('auth')->only('show');
-	}	
-	
     /**
      * Display a listing of the resource.
      *

@@ -23,7 +23,7 @@ class ItemController extends Controller
 		$item = Item::where('slug',$slug)->first();
 		
 		if(!$item){
-			return redirect('/items');
+			abort(404);
 		}
 		
 		return view('item-view',[

@@ -1,25 +1,6 @@
 @extends('layouts.app')
 @section('content')
 	<h1>Items</h1>
-	<div class="grid">
-		<div class="two columns">
-			<label>Type</label>
-			<select onchange="window.location.href = this.options[this.selectedIndex].value;">
-				<option value="/items/">None</option>
-				<option value="/items/type/sword">Sword</option>
-				<option value="/items/type/mace">Mace</option>
-			</select>
-		</div>
-		<div class="two columns">
-			<label>Quaity</label>
-			<select onchange="window.location.href = this.options[this.selectedIndex].value;">
-				<option value="/items/">None</option>
-				<option value="/items/quality/rare">rare</option>
-				<option value="/items/quality/epic">epic</option>
-			</select>
-		</div>
-		<div class="clear"></div>
-	</div>
 	<section>
 		<table class="full-width">
 			<thead>

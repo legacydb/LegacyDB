@@ -26,6 +26,6 @@ Route::resource('guide', 'GuideController', ['except' => ['index']]);
 Route::get('/items', 'ItemController@items');
 Route::get('/item/{slug}', 'ItemController@item');
 
+//Sets up Auth routes e.g. login, register
 Auth::routes();
-
 Route::get('/my-account', 'HomeController@index');

@@ -19,6 +19,7 @@ section{ margin:0 0 20px; }
 hr{ border:0; height:0; border-bottom:1px solid #31353d; margin:0 0 10px; }
 
 .container{ max-width:1020px; margin:auto; }
+.grid:after{ clear:both; content:""; display:table; }
 .header{ padding:20px; }
 .main-content{ padding:20px; background:#1c1d21; }
 
@@ -43,6 +44,7 @@ input:disabled, textarea:disabled, select:disabled{ background:#ccc; }
 .left{ float:left; }
 .clear{ clear:both; }
 .full-width{ width:100%; }
+.align-right{ text-align:right; }
 
 table{ border-collapse:collapse; }
 th, td{ text-align:left; padding:6px 5px; border-bottom:1px solid #31353d; }
@@ -67,6 +69,9 @@ th, td{ text-align:left; padding:6px 5px; border-bottom:1px solid #31353d; }
 .item-legendary, .item-legendary:hover{ color:#ff8000; }
 .item-artifact, .item-artifact:hover{ color:#e5cc80; }
 .item-heirloom, .item-heirloom:hover{ color:#e5cc80; }
+
+.item-name{ font-size:18px; }
+.item-spell{ color:#1EFF00; }
 
 
 @media (min-width: 550px) {
