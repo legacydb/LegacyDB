@@ -13,9 +13,8 @@
 
 use Illuminate\Http\Request;
 
-Route::get('/', function () {
-	return view('homepage');
-});
+// Homepage
+Route::get('/', function () { return view('homepage'); });
 
 // Guides
 Route::get('guides', 'GuideController@index');
