@@ -70,8 +70,11 @@ th, td{ text-align:left; padding:6px 5px; border-bottom:1px solid #31353d; }
 .item-artifact, .item-artifact:hover{ color:#e5cc80; }
 .item-heirloom, .item-heirloom:hover{ color:#e5cc80; }
 
+.item-icon{ float:left; margin:0 20px 0 0; }
+.item-content{ float:left; min-width:280px; line-height:1.4; }
 .item-name{ font-size:18px; }
 .item-spell{ color:#1EFF00; }
+.item-description{ color:#ffd100; }
 
 
 @media (min-width: 550px) {

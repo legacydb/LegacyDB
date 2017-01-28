@@ -10,9 +10,11 @@ class ItemController extends Controller
 	
 	public function items(Request $request){
 		
+		/*
 		echo '<pre>';
 		echo print_r($request->all());
 		echo '</pre>';
+		*/
 		
 		$items = Item::orderBy('id', 'asc')->paginate(100);
 		
