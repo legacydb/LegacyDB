@@ -33,7 +33,7 @@
 						@endif
 						@if($item->type)
 							<div class="six columns {{ isset($item->slot) ? 'align-right' : '' }}">
-								<span>{{ isset($item->slots) ? $item->slots . ' Slot ' : '' }}{{ $item->type }}</span>
+								<span>{{ $item->slots > 0 ? $item->slots . ' Slot ' : '' }}{{ $item->type }}</span>
 							</div>
 						@endif
 					</div>

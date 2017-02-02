@@ -47,5 +47,7 @@
 			@yield('content')
 		</div>
 	</div>
+	<script type="text/javascript" src="{{ URL::asset('js/jQuery.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/global.js') }}"></script>
 </body>
 </html>

@@ -1,6 +1,22 @@
 @extends('layouts.app')
 @section('content')
 	<h1>Items</h1>
+	<div class="grid">
+		<div class="two columns">
+			<label>Quality</label>
+			<select name="quality" class="search-filter">
+				<option value="">Any</option>
+				<option value="poor">Poor</option>
+				<option value="common">Common</option>
+				<option value="uncommon">Uncommon</option>
+				<option value="rare">Rare</option>
+				<option value="epic">Epic</option>
+				<option value="legendary">Legendary</option>
+				<option value="artifact">Artifact</option>
+				<option value="heirloom">Heirloom</option>
+			</select>
+		</div>
+	</div>
 	<section>
 		<table class="full-width">
 			<thead>
