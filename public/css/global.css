@@ -75,6 +75,17 @@ th, td{ text-align:left; padding:6px 5px; border-bottom:1px solid #31353d; }
 .item-name{ font-size:18px; }
 .item-spell{ color:#1EFF00; }
 .item-description{ color:#ffd100; }
+.item-required-faction{ color:#FF4040; }
+
+.item-class-warrior{ color:#C69B6D; }
+.item-class-paladin{ color:#F48CBA; }
+.item-class-hunter{ color:#AAD372; }
+.item-class-rogue{ color:#FFF468; }
+.item-class-shaman{ color:#2359FF; }
+.item-class-mage{ color:#68CCEF; }
+.item-class-druid{ color:#FF7C0A; }
+.item-class-warlock{ color:#9382C9; }
+.item-class-priest{ color:#FFF; }
 
 
 @media (min-width: 550px) {

@@ -44,7 +44,7 @@ class CreateItemsTable extends Migration
 			$table->integer('required_skill_rank');
 			$table->integer('required_spell');
 			$table->string('required_reputation_faction')->nullable();
-			$table->integer('required_reputation_value');
+			$table->string('required_reputation_value')->nullable();
 			$table->integer('durability');
 			$table->string('dmg_type1')->nullable();
 			$table->integer('dmg_min1');

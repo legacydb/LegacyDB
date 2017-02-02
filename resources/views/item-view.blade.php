@@ -15,6 +15,15 @@
 				@if($item->maxcount == 1)
 					<div>Unique</div>
 				@endif
+				@if($item->required_skill)
+					<div>Requires {{ $item->required_skill }} ({{ $item->required_skill_rank }})</div>
+				@endif
+				@if($item->required_spell)
+					<div>Requires {{ $item->required_spell }}</div>
+				@endif				
+				@if($item->required_reputation_faction)
+					<div class="item-required-faction">Requires {{ $item->required_reputation_faction }} - {{ $item->required_reputation_value }}</div>
+				@endif
 				@if($item->type || $item->slot)
 					<div class="grid">
 						@if($item->slot)
@@ -23,26 +32,31 @@
 							</div>
 						@endif
 						@if($item->type)
-							<div class="six columns align-right">
-								<span>{{ $item->type }}</span>
+							<div class="six columns {{ isset($item->slot) ? 'align-right' : '' }}">
+								<span>{{ isset($item->slots) ? $item->slots . ' Slot ' : '' }}{{ $item->type }}</span>
 							</div>
 						@endif
 					</div>
 				@endif
-				@if($item->dmg_min || $item->speed != '0.00')
+				@if($item->dmg_min1 || $item->speed != '0.00')
 					<div class="grid">
 						@if($item->dmg_min1 && $item->dmg_max1)
-							<div class="six columns">
-								<span>{{ $item->dmg_min1 }} - {{ $item->dmg_max1 }} damage</span>
+							<div class="eight columns">
+								<span>{{ $item->dmg_min1 }} - {{ $item->dmg_max1 }} {{ $item->dmg_type1 }} damage</span>
 							</div>
 						@endif
 						@if($item->speed)
-							<div class="six columns align-right">
+							<div class="four columns align-right">
 								<span>Speed {{ $item->speed }}</span>
 							</div>
 						@endif
 					</div>
 				@endif
+				@for($i=2; $i<=5; $i++)
+					@if($item['dmg_min' . $i])
+						<div>+{{ $item['dmg_min' . $i] }} - {{ $item['dmg_max' . $i] }} {{ $item['dmg_type' . $i] }} damage</div>
+					@endif
+				@endfor
 				@if($item->dps > 0)
 					<div>({{ round($item->dps,1) }} damage per second)</div>
 				@endif
@@ -54,8 +68,29 @@
 						<div>@if($item['stat_value' . $i] > 0)+@endif{{ $item['stat_value' . $i] }} {{ $item['stat_type' . $i] }}</div>
 					@endif
 				@endfor
+				@if($item->holy_res)
+					<div>+{{ $item->holy_res }} Holy Resistance</div>
+				@endif				
+				@if($item->fire_res)
+					<div>+{{ $item->fire_res }} Fire Resistance</div>
+				@endif
+				@if($item->nature_res)
+					<div>+{{ $item->nature_res }} Nature Resistance</div>
+				@endif
+				@if($item->frost_res)
+					<div>+{{ $item->frost_res }} Frost Resistance</div>
+				@endif
+				@if($item->shadow_res)
+					<div>+{{ $item->shadow_res }} Shadow Resistance</div>
+				@endif
+				@if($item->arcane_res)
+					<div>+{{ $item->arcane_res }} Arcane Resistance</div>
+				@endif
 				@if($item->durability)
 					<div>Durability {{ $item->durability }} / {{ $item->durability }}</div>
+				@endif
+				@if($item->allowed_class)
+					<div>Classes: {!! $item->allowed_class !!}</div>
 				@endif
 				@if($item->reqlevel > 0)
 					<div>Requires Level {{ $item->reqlevel }}</div>
