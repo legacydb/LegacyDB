@@ -10,6 +10,10 @@ class ItemController extends Controller
 	
 	public static function filter(Request $request, Item $items){
 		
+		if($request->has('search')){
+			$items = $items->where('name','like','%'.$request->search.'%');
+		}
+		
 		if($request->has('quality')){
 			$items = $items->where('quality',$request->quality);
 		}
@@ -24,7 +28,8 @@ class ItemController extends Controller
 		$items = static::filter($request, $items);
 		
 		return view('items', [
-			'items' => $items
+			'items' => $items,
+			'request' => $request
 		]);
 		
 	}

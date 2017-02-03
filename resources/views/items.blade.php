@@ -1,22 +1,31 @@
 @extends('layouts.app')
 @section('content')
 	<h1>Items</h1>
-	<div class="grid">
-		<div class="two columns">
-			<label>Quality</label>
-			<select name="quality" class="search-filter">
-				<option value="">Any</option>
-				<option value="poor">Poor</option>
-				<option value="common">Common</option>
-				<option value="uncommon">Uncommon</option>
-				<option value="rare">Rare</option>
-				<option value="epic">Epic</option>
-				<option value="legendary">Legendary</option>
-				<option value="artifact">Artifact</option>
-				<option value="heirloom">Heirloom</option>
-			</select>
+	<form method="get">
+		<div class="grid">
+			<div class="four columns">
+				<label>Search</label>
+				<input type="text" name="search" value="{{ $request->search }}" />
+			</div>
+			<div class="two columns">
+				<label>Quality</label>
+				<select name="quality">
+					<option value>Any</option>
+					<option {{ $request->quality == 'poor' ? 'selected' : '' }} value="poor">Poor</option>
+					<option {{ $request->quality == 'common' ? 'selected' : '' }} value="common">Common</option>
+					<option {{ $request->quality == 'uncommon' ? 'selected' : '' }} value="uncommon">Uncommon</option>
+					<option {{ $request->quality == 'rare' ? 'selected' : '' }} value="rare">Rare</option>
+					<option {{ $request->quality == 'epic' ? 'selected' : '' }} value="epic">Epic</option>
+					<option {{ $request->quality == 'legendary' ? 'selected' : '' }} value="legendary">Legendary</option>
+					<option {{ $request->quality == 'artifact' ? 'selected' : '' }} value="artifact">Artifact</option>
+				</select>
+			</div>
+			<div class="two columns">
+				<label>&nbsp;</label>
+				<input type="submit" value="Search" />
+			</div>
 		</div>
-	</div>
+	</form>
 	<section>
 		<table class="full-width">
 			<thead>

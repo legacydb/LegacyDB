@@ -21,7 +21,7 @@ hr{ border:0; height:0; border-bottom:1px solid #31353d; margin:0 0 10px; }
 .container{ max-width:1020px; margin:auto; }
 .grid:after{ clear:both; content:""; display:table; }
 .header{ padding:20px; }
-.main-content{ padding:20px; background:#1c1d21; }
+.main-content{ padding:20px; background:#1c1d21; margin:0 0 40px; }
 
 .main-nav{ margin:0 0 20px; padding:0 0 20px; border-bottom:1px solid #31353d; }
 .main-nav ul{ list-style-type:none; }
@@ -37,7 +37,7 @@ hr{ border:0; height:0; border-bottom:1px solid #31353d; margin:0 0 10px; }
 
 input, textarea, select, fieldset{ margin:0 0 10px; }
 label{ display:block; }
-input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea, select { width:100%; border:0; font-family: 'Catamaran', sans-serif; padding:5px 6px; font-size:15px; outline:none; }
+input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea, select { width:100%; border:0; font-family: 'Catamaran', sans-serif; padding:5px 6px; font-size:15px; outline:none; height:40px; }
 input:disabled, textarea:disabled, select:disabled{ background:#ccc; }
 
 .right{ float:right; }
