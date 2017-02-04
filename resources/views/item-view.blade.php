@@ -92,7 +92,7 @@
 				@if($item->allowed_class)
 					<div>Classes: {!! $item->allowed_class !!}</div>
 				@endif
-				@if($item->reqlevel > 0)
+				@if($item->reqlevel > 1)
 					<div>Requires Level {{ $item->reqlevel }}</div>
 				@endif
 				@if($item->randomproperty)
