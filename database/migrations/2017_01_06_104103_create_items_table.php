@@ -89,14 +89,19 @@ class CreateItemsTable extends Migration
 			$table->integer('arcane_res');
 			$table->integer('spell_id1');
 			$table->string('spell_trigger1')->nullable();
+			$table->text('spell_text1')->nullable();
 			$table->integer('spell_id2');
 			$table->string('spell_trigger2')->nullable();
+			$table->text('spell_text2')->nullable();
 			$table->integer('spell_id3');
 			$table->string('spell_trigger3')->nullable();
+			$table->text('spell_text3')->nullable();
 			$table->integer('spell_id4');
 			$table->string('spell_trigger4')->nullable();
+			$table->text('spell_text4')->nullable();
 			$table->integer('spell_id5');
 			$table->string('spell_trigger5')->nullable();
+			$table->text('spell_text5')->nullable();
             $table->timestamps();
         });
     }

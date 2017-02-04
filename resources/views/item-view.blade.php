@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	<h1 class="post-title">{{ $item->name }}</h1>
+	<h1 class="post-title">{{ $item->name }} - {{ $item->entry }}</h1>
 	<hr/>
 	<div class="content">
 		
@@ -100,7 +100,7 @@
 				@endif
 				@for($i=1; $i<=5; $i++)
 					@if($item['spell_trigger' . $i])
-						<div class="item-spell">{{ $item['spell_trigger' . $i] }}: {{ $item['spell_id' . $i] }}</div>
+						<div class="item-spell">{{ $item['spell_trigger' . $i] }}: {{ $item['spell_text' . $i] }}</div>
 					@endif
 				@endfor
 				@if($item->description)
