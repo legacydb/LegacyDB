@@ -3,10 +3,9 @@
 @section('content')
 	<h1 class="post-title">{{ $item->name }} - {{ $item->entry }}</h1>
 	<hr/>
-	<div class="content">
-		
-		<div class="grid item-info">
-			<img src="/images/icons/large/{{ $item->icon }}.png" class="item-icon" />
+	<div class="grid content">
+		<div class="item-tooltip">
+			<div class="item-icon">@if($item->stacks > 1) <span class="item-stacks">{{ $item->stacks }}</span> @endif<img src="/images/icons/large/{{ $item->icon }}.png" /></div>
 			<div class="item-content">
 				<span class="item-{{ $item->quality }} item-name">{{ $item->name }}</span><br/>
 				@if($item->binds)
@@ -110,6 +109,13 @@
 					<div class="item-spell">{{ "<Click to Read>" }}</div>
 				@endif
 			</div>
+		</div>
+		<div class="item-info">
+			<h5 class="no-margin">Item info</h5>
+			<hr/>
+			<div>Item level: {{ $item->itemlevel }}</div>			
+			<div>Buy price: {!! $item->buyprice !!}</div>
+			<div>Sell price: {!! $item->sellprice !!}</div>
 		</div>
 	</div>
 @endsection

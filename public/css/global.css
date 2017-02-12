@@ -45,6 +45,7 @@ input:disabled, textarea:disabled, select:disabled{ background:#ccc; }
 .clear{ clear:both; }
 .full-width{ width:100%; }
 .align-right{ text-align:right; }
+.no-margin{ margin:0; }
 
 table{ border-collapse:collapse; }
 th, td{ text-align:left; padding:6px 5px; border-bottom:1px solid #31353d; }
@@ -70,7 +71,8 @@ th, td{ text-align:left; padding:6px 5px; border-bottom:1px solid #31353d; }
 .item-artifact, .item-artifact:hover{ color:#e5cc80; }
 .item-heirloom, .item-heirloom:hover{ color:#e5cc80; }
 
-.item-icon{ float:left; margin:0 20px 0 0; }
+.item-icon{ float:left; margin:0 20px 0 0; position:relative; }
+.item-stacks{ position:absolute; bottom:8px; right:8px; font-size:18px; font-weight:bold; text-shadow:1px 1px 3px #000; }
 .item-content{ float:left; width:310px; line-height:1.4; }
 .item-name{ font-size:18px; }
 .item-spell{ color:#1EFF00; }
@@ -87,6 +89,8 @@ th, td{ text-align:left; padding:6px 5px; border-bottom:1px solid #31353d; }
 .item-class-warlock{ color:#9382C9; }
 .item-class-priest{ color:#FFF; }
 
+.item-tooltip{ float:left; }
+.item-info{ float:right; width:200px; }
 
 @media (min-width: 550px) {
 	.column,

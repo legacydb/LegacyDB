@@ -20,4 +20,20 @@ class Item extends Model
 		}	
 		
 	}
+	
+	public function formatPrice($price){
+		
+		$priceNames = array('copper','silver','gold');
+		$values = str_split($price,2);
+		
+		$html = '';
+		$priceCount = count($values);
+		foreach($values as $i => $value){
+			$html .= '<span class="item-price-' . $priceNames[--$priceCount] . '">' . number_format($value) . '</span>';
+		}
+		
+		return $html;
+		
+	}
+	
 }

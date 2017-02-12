@@ -43,6 +43,8 @@ class ItemController extends Controller
 		}
 		
 		$item->allowed_class = $item->formatAllowedClasses();
+		$item->buyprice = $item->formatPrice($item->buyprice);
+		$item->sellprice = $item->formatPrice($item->sellprice);
 		
 		return view('item-view',[
 			'item' => $item,
