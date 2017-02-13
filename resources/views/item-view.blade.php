@@ -113,9 +113,13 @@
 		<div class="item-info">
 			<h5 class="no-margin">Item info</h5>
 			<hr/>
-			<div>Item level: {{ $item->itemlevel }}</div>			
-			<div>Buy price: {!! $item->buyprice !!}</div>
-			<div>Sell price: {!! $item->sellprice !!}</div>
+			<div>Item level: {{ $item->itemlevel }}</div>
+			@if($item->buyprice)
+				<div>Buy price: {!! $item->buyprice !!}</div>
+			@endif
+			@if($item->sellprice)
+				<div>Sell price: {!! $item->sellprice !!}</div>
+			@endif
 		</div>
 	</div>
 @endsection
