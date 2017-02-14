@@ -2,7 +2,6 @@
 html{ margin:0; }
 body{ font-family: 'Catamaran', sans-serif; background:url('/images/bg2.jpg') #1c1d21 no-repeat center center fixed; background-size:cover; color:#eeeff7; font-size:15px; line-height:1.6; }
 
-h1,h2,h3,h4,h5,h6{ margin:0 0 10px; }
 h1{ font-size:28px; }
 h2{ font-size:25px; }
 h3{ font-size:22px; }
@@ -73,7 +72,7 @@ th, td{ text-align:left; padding:6px 5px; border-bottom:1px solid #31353d; }
 
 .item-icon{ float:left; margin:0 20px 0 0; position:relative; }
 .item-stacks{ position:absolute; bottom:8px; right:8px; font-size:18px; font-weight:bold; text-shadow:1px 1px 3px #000; }
-.item-content{ float:left; width:310px; line-height:1.4; }
+.item-content{ float:left; width:310px; line-height:1.4; padding: 4px 8px; border:1px solid #666; border-radius:6px; }
 .item-name{ font-size:18px; }
 .item-spell{ color:#1EFF00; }
 .item-description{ color:#ffd100; }

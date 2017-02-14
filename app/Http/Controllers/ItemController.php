@@ -4,9 +4,34 @@ namespace App\Http\Controllers;
 
 use App\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
 {
+	
+	public static function getSlots(){
+		
+		$results = DB::table('items')->select('slot')->distinct()->get();
+		
+		foreach($results as $result){
+			if($result->slot){
+				$array[] = $result->slot;
+			}
+		}
+		return $array;
+	}
+	
+	public static function getTypes(){
+		
+		$results = DB::table('items')->select('type')->distinct()->get();
+		
+		foreach($results as $result){
+			if($result->type){
+				$array[] = $result->type;
+			}
+		}
+		return $array;
+	}	
 	
 	public static function filter(Request $request, Item $items){
 		
@@ -18,6 +43,14 @@ class ItemController extends Controller
 			$items = $items->where('quality',$request->quality);
 		}
 		
+		if($request->has('slot')){
+			$items = $items->where('slot',$request->slot);
+		}		
+		
+		if($request->has('type')){
+			$items = $items->where('type',$request->type);
+		}
+		
 		return $items->paginate(100);
 		
 	}
@@ -27,9 +60,14 @@ class ItemController extends Controller
 		$items = new Item;
 		$items = static::filter($request, $items);
 		
+		$searchOptions['quality'] = array('Poor','Common','Uncommon','Rare','Epic','Legendary','Artifact');
+		$searchOptions['slots'] = static::getSlots(); 
+		$searchOptions['types'] = static::getTypes(); 
+		
 		return view('items', [
 			'items' => $items,
-			'request' => $request
+			'request' => $request,
+			'searchOptions' => $searchOptions
 		]);
 		
 	}

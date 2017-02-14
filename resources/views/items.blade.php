@@ -3,7 +3,7 @@
 	<h1>Items</h1>
 	<form method="get">
 		<div class="grid">
-			<div class="four columns">
+			<div class="two columns">
 				<label>Search</label>
 				<input type="text" name="search" value="{{ $request->search }}" />
 			</div>
@@ -11,15 +11,29 @@
 				<label>Quality</label>
 				<select name="quality">
 					<option value>Any</option>
-					<option {{ $request->quality == 'poor' ? 'selected' : '' }} value="poor">Poor</option>
-					<option {{ $request->quality == 'common' ? 'selected' : '' }} value="common">Common</option>
-					<option {{ $request->quality == 'uncommon' ? 'selected' : '' }} value="uncommon">Uncommon</option>
-					<option {{ $request->quality == 'rare' ? 'selected' : '' }} value="rare">Rare</option>
-					<option {{ $request->quality == 'epic' ? 'selected' : '' }} value="epic">Epic</option>
-					<option {{ $request->quality == 'legendary' ? 'selected' : '' }} value="legendary">Legendary</option>
-					<option {{ $request->quality == 'artifact' ? 'selected' : '' }} value="artifact">Artifact</option>
+					@foreach ($searchOptions['quality'] as $quality)
+						<option {{ $request->quality == $quality ? 'selected' : '' }} value="{{ $quality }}">{{ $quality }}</option>
+					@endforeach
 				</select>
 			</div>
+			<div class="two columns">
+				<label>Slot</label>
+				<select name="slot">
+					<option value>Any</option>
+					@foreach ($searchOptions['slots'] as $slot)
+						<option {{ $request->slot == $slot ? 'selected' : '' }} value="{{ $slot }}">{{ $slot }}</option>
+					@endforeach
+				</select>
+			</div>
+			<div class="two columns">
+				<label>Type</label>
+				<select name="type">
+					<option value>Any</option>
+					@foreach ($searchOptions['types'] as $type)
+						<option {{ $request->type == $type ? 'selected' : '' }} value="{{ $type }}">{{ $type }}</option>
+					@endforeach
+				</select>
+			</div>				
 			<div class="two columns">
 				<label>&nbsp;</label>
 				<input type="submit" value="Search" />
@@ -32,8 +46,8 @@
 				<tr>
 					<th></th>
 					<th>Title</th>
+					<th>Slot</th>					
 					<th>Type</th>
-					<th>Slot</th>
 					<th>Item Level</th>
 					<th>DPS</th>
 					<th>Armor</th>
@@ -45,8 +59,8 @@
 						<tr>
 							<td><img src="/images/icons/medium/{{ $item->icon }}.png" /></td>
 							<td><a class="item-{{ $item->quality }}" href="/item/{{ $item->slug }}">{{ $item->name }}</a></td>
-							<td>{{ $item->type }}</td>
 							<td>{{ $item->slot }}</td>
+							<td>{{ $item->type }}</td>
 							<td>{{ $item->itemlevel }}</td>
 							<td>{{ $item->dps }}</td>
 							<td>{{ $item->armor }}</td>
