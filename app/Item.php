@@ -27,26 +27,22 @@ class Item extends Model
 			return 0;
 		}
 		
-		echo $price;
+		$gold = floor($price / 10000);
+		$silver = floor($price % 10000 / 100);
+		$copper = floor($price % 100);
 		
-		$priceNames = array('copper','silver','gold');
-		$length = strlen($price);
-		$values = array();
 		$html = '';
 		
-		if($length > 6){
-			$difference = $length - 6 + 2;
-			$values[0] = substr($price,0,$difference);
-			$values[1] = substr($price,$difference,2);
-			$values[2] = substr($price,$difference + 2,4);
-		} else {
-			$values = str_split($price,2);
+		if($gold > 0){
+			$html .= '<span class="item-price-gold">' . $gold . '</span>';
 		}
 		
-		$priceCount = count($values);
+		if($silver > 0){
+			$html .= '<span class="item-price-silver">' . $silver . '</span>';
+		}
 		
-		foreach($values as $i => $value){
-			$html .= '<span class="item-price item-price-' . $priceNames[--$priceCount] . '">' . number_format($value) . '</span>';
+		if($copper > 0){
+			$html .= '<span class="item-price-copper">' . $copper . '</span>';
 		}
 		
 		return $html;

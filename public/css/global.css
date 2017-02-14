@@ -78,6 +78,9 @@ th, td{ text-align:left; padding:6px 5px; border-bottom:1px solid #31353d; }
 .item-spell{ color:#1EFF00; }
 .item-description{ color:#ffd100; }
 .item-required-faction{ color:#FF4040; }
+.item-price-gold{ background:url('/images/money_gold.gif') no-repeat right 6px; padding:0 15px 0 0; }
+.item-price-silver{ background:url('/images/money_silver.gif') no-repeat right 6px; padding:0 15px 0 5px; }
+.item-price-copper{ background:url('/images/money_copper.gif') no-repeat right 6px; padding:0 15px 0 5px; }
 
 .item-class-warrior{ color:#C69B6D; }
 .item-class-paladin{ color:#F48CBA; }
