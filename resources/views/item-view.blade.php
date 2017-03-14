@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	<h1 class="post-title">{{ $item->name }} - {{ $item->entry }}</h1>
+	<h1 class="post-title">{{ $item->name }}</h1>
 	<hr/>
 	<div class="grid content">
 		<section>
@@ -121,6 +121,7 @@
 				@if($item->sellprice)
 					<div>Sell price: {!! $item->sellprice !!}</div>
 				@endif
+				<div>Entry: <a href="http://db.vanillagaming.org/?item={{ $item->entry }}" target="_blank">{{ $item->entry }}</a></div>
 			</div>
 			<div class="clear"></div>
 		</section>

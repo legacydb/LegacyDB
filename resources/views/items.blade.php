@@ -3,7 +3,7 @@
 	<h1>Items</h1>
 	<form method="get">
 		<div class="grid">
-			<div class="two columns">
+			<div class="three columns">
 				<label>Search</label>
 				<input type="text" name="search" value="{{ $request->search }}" />
 			</div>
@@ -36,7 +36,7 @@
 			</div>				
 			<div class="two columns">
 				<label>&nbsp;</label>
-				<input type="submit" value="Search" />
+				<input type="submit" value="Search" class="button-primary" />
 			</div>
 		</div>
 	</form>
